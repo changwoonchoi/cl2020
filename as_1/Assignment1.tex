@@ -1,0 +1,81 @@
+\documentclass[12pt]{article}%
+\usepackage{amsfonts}
+\usepackage{fancyhdr}
+\usepackage{comment}
+\usepackage[a4paper, top=2.5cm, bottom=2.5cm, left=2.2cm, right=2.2cm]%
+{geometry}
+\usepackage{times}
+\usepackage{amsmath}
+\usepackage{changepage}
+\usepackage{amssymb}
+\usepackage{graphicx}%
+\setcounter{MaxMatrixCols}{30}
+\newtheorem{theorem}{Theorem}
+\newtheorem{acknowledgement}[theorem]{Acknowledgement}
+\newtheorem{algorithm}[theorem]{Algorithm}
+\newtheorem{axiom}{Axiom}
+\newtheorem{case}[theorem]{Case}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{conclusion}[theorem]{Conclusion}
+\newtheorem{condition}[theorem]{Condition}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{criterion}[theorem]{Criterion}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{exercise}[theorem]{Exercise}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{notation}[theorem]{Notation}
+\newtheorem{problem}[theorem]{Problem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{solution}[theorem]{Solution}
+\newtheorem{summary}[theorem]{Summary}
+\newenvironment{proof}[1][Proof]{\textbf{#1.} }{\ \rule{0.5em}{0.5em}}
+
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Z}{\mathbb{Z}}
+
+\begin{document}
+
+\title{Assignment 1}
+\author{Changwoon Choi \\ 2020-20206}
+\date{\today}
+\maketitle
+
+\section{Sampling theorem}
+\subsection{Explain the Nyquist limit.}
+Ans) \\
+
+
+\subsection{According to the sampling theorem, what is the highest cutoff frequency of a low-pass filter you must use in order to avoid aliasing given the sampling rate of 10 kHz (assume an ideal brick-wall filter)?}
+Ans) \\
+
+\section{Sinusoids}
+
+\subsection{For a sinusoid with a period $T_0 = 0.8$  seconds, what is the frequency $f_0$ in Hz?}
+dd
+\subsection{If we sample the above sinusoid with the sampling rate $f_s$=8000 Hz, what value do we obtain at the $100^{th}$  sample (i.e., $n$=100), assuming the peak amplitude $A$=1  and the initial phase $\phi_0$=0  ?}
+
+\section{DFT}
+Find the length $N=8$ DFTs \\ 
+\begin{center}
+    $X_i (k), k = 0, 1, ..., 6, 7$
+\end{center}
+for the following $X_i (n)$ sequences (don't use Python):
+\subsection{$x_1$ [1,0,0,0,0,0,0,0]}
+\subsection{$x_2$ [0,1,0,0,0,0,0,0]}
+\subsection{$x_3$ [1,1,1,1,1,1,1,1]}
+\subsection{$x_4$ [1,-1,1,-1,1,-1,1,-1]}
+
+\section{Zero padding}
+The zero padding factor or $zpf$ is the ratio of the length of the zero-padded signal ($N$) to the length of the original signal ($M$): i.e.,\\
+\begin{center}
+    $zpf = {N \over M}$
+\end{center}
+\subsection{Explain zero padding}
+\subsection{Assume you want to analyze a sinusoid whose frequency is $f_0$=10  Hz with the sampling rate  $f_s$=8000  Hz, using the 1000-point FFT. What $zpf$ do you need to have the peak magnitude bin frequency correspond exactly to the correct frequency of the sinusoid?}
+
+\end{document}
