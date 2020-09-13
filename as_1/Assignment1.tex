@@ -105,12 +105,23 @@ $X_4 (4) = 8$
 \bigskip
 \bigskip
 \section{Zero padding}
-The zero padding factor or $zpf$ is the ratio of the length of the zero-padded signal ($N$) to the length of the original signal ($M$): i.e.,\\
+The zero padding factor or $zpf$ is the ratio of the length of the zero-padded signal ($N$) to the length of the original signal ($M$): i.e.,
 \begin{center}
     $zpf = {N \over M}$
 \end{center}
 \subsection{Explain zero padding}
-Ans) 
+Ans) In $N$-point DFT(or in practical computed by FFT), the frequency resolution is given by
+\begin{center}
+	$\Delta f = {f_s \over N}.$
+\end{center}
+Thus, to produce finer frequency resolution without sampling over longer time fraction(naively sampling more $N$ would make poor result since it leads to loose time resolution.), we can increase samples with adding zero-valued samples. Furthermore, adding zero-valued samples doesn't change the information of original signal(doesn't change the frequency spectrum itself) and at the same time, it enables to increase frequency resolution without losing time resolution. 
+
 \subsection{Assume you want to analyze a sinusoid whose frequency is $f_0=10 Hz$ with the sampling rate  $f_s=8000 Hz$, using the 1000-point FFT. What $zpf$ do you need to have the peak magnitude bin frequency correspond exactly to the correct frequency of the sinusoid?}
-Ans) N = 1600, M = 1000
+Ans) Sampling 1000 samples with given $f_s$ and $f_0$ without zero padding would produce 'spectral leaking'. Namely, there are discontinuities at the boundaries(the starting and ending point of sampling). So if we want to get the peak magnitude bin frequency corresponding to the ground truth frequency, which is $f_0 = 10Hz$, we need to add zero-valued samples to connect the samples seamlessly. Considering the relation below, 
+\begin{center}
+	${(1000 + 600) \over 8000} = 2 {1 \over 10}$
+\end{center}
+we can draw the conclusion that adding 600 zero-valued samples makes us to have the peak magnitude bin frequency correspond exactly to the correct frequency of the sinusoid. \\
+Thus, $zpf = {1600 \over 1000} = 1.6$
+
 \end{document}
