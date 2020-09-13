@@ -47,17 +47,24 @@
 
 \section{Sampling theorem}
 \subsection{Explain the Nyquist limit.}
-Ans) \\
-
+Ans) Nyquist limit is the lowest bound of sampling rate which ensures that aliasing does not occur. In other words, the minimum sampling rate that produces a signal that still contains all of the original signal's information is known as the Nyquist rate or Nyquist limit, which is \textit{twice the maximum frequency in the original signal}.
 
 \subsection{According to the sampling theorem, what is the highest cutoff frequency of a low-pass filter you must use in order to avoid aliasing given the sampling rate of 10 kHz (assume an ideal brick-wall filter)?}
-Ans) \\
+Ans) Not to make the sampled signal aliased, the max frequency of signal should be smaller than half of sampling frequency, which is 10 kHz. So we need to filter the frequencies of original signal higher than 5 kHz. Thus, the \textit{highest cutoff frequency of a low-pass filter is 5 kHz.}
 
 \section{Sinusoids}
 
 \subsection{For a sinusoid with a period $T_0 = 0.8$  seconds, what is the frequency $f_0$ in Hz?}
-dd
-\subsection{If we sample the above sinusoid with the sampling rate $f_s$=8000 Hz, what value do we obtain at the $100^{th}$  sample (i.e., $n$=100), assuming the peak amplitude $A$=1  and the initial phase $\phi_0$=0  ?}
+Ans) 
+$f_0 = {1 \over T_0} = {1 \over 0.8} = 1.25Hz$
+
+\subsection{If we sample the above sinusoid with the sampling rate $f_s=8000 Hz$, what value do we obtain at the $100^{th}$  sample (i.e., $n=100$), assuming the peak amplitude $A=1$  and the initial phase $\phi_0 = 0$?}
+Ans) The $n^{th}$ sample value of sinusoid is 
+\begin{center}
+	$A \sin(2 \pi f_0 t) = A \sin(2 \pi f_0 {n \over f_s})$
+\end{center}
+Thus, the value we obtain at the $100^{th}$ sample is \textbf{0.0980171} \\
+(If we start sampling from t=0, the$n^{th}$ sample value of sinusoid would be $A \sin(2 \pi f_0 t) = A \sin(2 \pi f_0 {n-1 \over f_s})$ = 0.0970401)
 
 \section{DFT}
 Find the length $N=8$ DFTs \\ 
