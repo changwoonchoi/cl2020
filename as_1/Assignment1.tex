@@ -61,28 +61,56 @@ $f_0 = {1 \over T_0} = {1 \over 0.8} = 1.25Hz$
 \subsection{If we sample the above sinusoid with the sampling rate $f_s=8000 Hz$, what value do we obtain at the $100^{th}$  sample (i.e., $n=100$), assuming the peak amplitude $A=1$  and the initial phase $\phi_0 = 0$?}
 Ans) The $n^{th}$ sample value of sinusoid is 
 \begin{center}
-	$A \sin(2 \pi f_0 t) = A \sin(2 \pi f_0 {n \over f_s})$
+	$A \sin(2 \pi f_0 t + \phi_0) = A \sin(2 \pi f_0 {n \over f_s} + \phi_0)$
 \end{center}
 Thus, the value we obtain at the $100^{th}$ sample is \textbf{0.0980171} \\
-(If we start sampling from t=0, the$n^{th}$ sample value of sinusoid would be $A \sin(2 \pi f_0 t) = A \sin(2 \pi f_0 {n-1 \over f_s})$ = 0.0970401)
+(If we start sampling from t=0, the$n^{th}$ sample value of sinusoid would be $A \sin(2 \pi f_0 t + \phi_0) = A \sin(2 \pi f_0 {n-1 \over f_s} + \phi_0 )$ = 0.0970401)
 
 \section{DFT}
 Find the length $N=8$ DFTs \\ 
 \begin{center}
     $X_i (k), k = 0, 1, ..., 6, 7$
 \end{center}
-for the following $X_i (n)$ sequences (don't use Python):
-\subsection{$x_1$ [1,0,0,0,0,0,0,0]}
-\subsection{$x_2$ [0,1,0,0,0,0,0,0]}
-\subsection{$x_3$ [1,1,1,1,1,1,1,1]}
-\subsection{$x_4$ [1,-1,1,-1,1,-1,1,-1]}
+for the following $X_i (n)$ sequences:
+\subsection{$x_1 = [1,0,0,0,0,0,0,0]$}
+Ans) $X_1 (k) = \sum_{n=0}^{N-1} x_1 (n) e^{- j 2 \pi n k / N} = 1 (k=0, 1, ..., 6, 7)$
 
+\subsection{$x_2 = [0,1,0,0,0,0,0,0]$}
+Ans) $X_2 (k) = \sum_{n=0}^{N-1} x_2 (n) e^{- j 2 \pi n k / N} = e^{-j 2 \pi k / 8}$\\
+$X_2 (0) = 1$\\
+$X_2 (1) = e^{- j \pi / 4} = {\sqrt{2} \over 2} - {\sqrt{2} \over 2}j$\\
+$X_2 (2) = e^{- j \pi / 2} = -j$\\
+$X_2 (3) = e^{- j 3 \pi / 4} = -{\sqrt{2} \over 2} - {\sqrt{2} \over 2}j$\\
+$X_2 (4) = e^{- j \pi} = -1$\\
+$X_2 (5) = e^{- j 5 \pi / 4} = -{\sqrt{2} \over 2} + {\sqrt{2} \over 2}j$\\
+$X_2 (6) = e^{- j 3 \pi / 2} = j$\\
+$X_2 (7) = e^{- j 7 \pi / 4} = {\sqrt{2} \over 2} + {\sqrt{2} \over 2}j$\\
+
+\subsection{$x_3 = [1,1,1,1,1,1,1,1]$}
+Ans) $X_3 (k) = \sum_{n=0}^{N-1} x_3 (n) e^{- j 2 \pi n k / N} = \sum_{n=0}^{n=7} e^{-j2\pi nk/8}$\\
+$X_3 (0) = 8$\\
+$X_3 (k) = 0 (k = 1, 2, ..., 6, 7)$ \\($\because e^{-j2\pi nk/8}$ is the vertex of regular polygon)
+\subsection{$x_4 = [1,-1,1,-1,1,-1,1,-1]$}
+Ans) $X_4 (k) = \sum_{n=0}^{N-1} x_4 (n) e^{- j 2 \pi n k / N} = \sum_{n=0}^{n=3} e^{- j 2 \pi 2n k / 8} - e^{- j 2 \pi (2n + 1) k / 8}$\\
+We can get results below by expanding all terms.\\
+$X_4 (k) = 0(k=0, 1, 2, 3, 5, 6, 7)$\\
+$X_4 (4) = 8$
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
 \section{Zero padding}
 The zero padding factor or $zpf$ is the ratio of the length of the zero-padded signal ($N$) to the length of the original signal ($M$): i.e.,\\
 \begin{center}
     $zpf = {N \over M}$
 \end{center}
 \subsection{Explain zero padding}
-\subsection{Assume you want to analyze a sinusoid whose frequency is $f_0$=10  Hz with the sampling rate  $f_s$=8000  Hz, using the 1000-point FFT. What $zpf$ do you need to have the peak magnitude bin frequency correspond exactly to the correct frequency of the sinusoid?}
-
+Ans) 
+\subsection{Assume you want to analyze a sinusoid whose frequency is $f_0=10 Hz$ with the sampling rate  $f_s=8000 Hz$, using the 1000-point FFT. What $zpf$ do you need to have the peak magnitude bin frequency correspond exactly to the correct frequency of the sinusoid?}
+Ans) N = 1600, M = 1000
 \end{document}
