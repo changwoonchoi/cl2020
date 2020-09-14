@@ -1,3 +1,4 @@
 # Computer Listening Assignment
 
-haha..
+## Assignment1 : Fundamentals of DSP for Audio/Music
+## Assignment2: 
