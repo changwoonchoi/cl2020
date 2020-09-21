@@ -52,10 +52,15 @@ Consider a signal $x(n)$ given by \\
 \end{center}
 Given two linear predictive coefficients with order 3 and 5 specified by $A_1 = [-0.17, -0.5, 0.17]$ and $A_2 = [-0.21, -0.38, 0.21, 0.25, 0.01]$, respectively,
 \subsection{Find $\hat{x_1}(n)$ and $\hat{x_2}(n)$)}
-$\hat{x_1}(0) = $
+$\hat{x_1}(n) = \sum_{k=1}^{3} a_k x(n-k) = [0, -0.17, -0.33, 0.67, -0.34, -0.5, 0.34, 0.33]$ \\ \\
+$\hat{x_2}(n) = \sum_{k=1}^{5} a_k x(n-k) = [0, -0.21, -0.17, 0.59, -0.17, -0.62, 0.41, 0.42]$
+
 \subsection{Compute the residual errors $e_1 (n)$ and $e_2 (n)$.}
-
+$e_1 (n) = x(n) - \hat{x_1}(n) = [1, -0.83, 0.33, 0.33, 0.34, -0.5, 0.66, 0.67]$ \\ \\
+$e_2 (n) = x(n) - \hat{x_2}(n) = [1, -0.79, 0.17, 0.41, 0.17, -0.38, 0.59, 0.58]$
 \subsection{Compute the mean square errors (MSE). The MSE is given by $MSE = {1 \over N} \sum_{n=0}^{N-1}[e(n)]^2$ Are the results consistent with your expectation?}
-
+$MSE_1 = {1 \over N} \sum_{n=0}^{N-1}[e_1 (n)]^2 = 0.3946$ \\ \\
+$MSE_2 = {1 \over N} \sum_{n=0}^{N-1}[e_2 (n)]^2 = 0.3348625$ \\ \\
+$\hat{x_2}(n)$ was expected to have better(lower) MSE. Since the higher the filter order, the closer the approximation is to the signal's spectrum coefficients. Thus, the results were consistent with my initial expectation.
 
 \end{document}
