@@ -1,4 +1,4 @@
-# Computer Listening Assignment
+# Computer Listening (2020 Fall)
 
 ## Assignment1 : Fundamentals of DSP for Audio/Music
 #### 1) Generate sinusoid waves
