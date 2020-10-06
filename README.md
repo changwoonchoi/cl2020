@@ -2,7 +2,7 @@
 
 ## About
 
-This is Python implementation of Computer Listening class assignments
+Python implementations of Computer Listening class assignments
 
 ## Dependence
 
