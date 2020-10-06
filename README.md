@@ -12,3 +12,9 @@
 #### 2) Spectral envelope - MFCC
 #### 3) Constant-Q Transform
 #### 4) Chromagram
+## Assignment3: Music Analysis
+#### 1) Onset Detection (time-domain, frequcney-domain, phase-based features)
+#### 2) Chord Recognition using Chromagram
+## Assignment4: Speech Analysis
+## 1) Pitch analysis (autocorrelation analysis)
+## 2) Formant analysis (cepstrum analysis)
