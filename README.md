@@ -3,6 +3,7 @@
 ## Assignment1 : Fundamentals of DSP for Audio/Music
 #### 1) Generate sinusoid waves
 #### 2) Additive Synthesis - Fourier Series
+![sine_synthesis]('./as_1/synthesis.png')
 #### 3) FFT Analysis
 #### 4) Zero Padding
 #### 5) Windowing
