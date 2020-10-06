@@ -1,5 +1,28 @@
 # Computer Listening (2020 Fall)
 
+## About
+
+This is Python implementation of Computer Listening class assignments
+
+## Dependence
+
+- Ubuntu 18.04
+- Python 3.8
+- numpy
+- jupyterlab
+- matplotlib
+- librosa
+- SoundFile
+
+## Installation
+ **conda environment setting**
+
+```
+conda create -n CL python=3.8
+source activate CL
+pip install -r requirements.txt
+```
+
 ## Assignment1 : Fundamentals of DSP for Audio/Music
 #### 1) Generate sinusoid waves
 #### 2) Additive Synthesis - Fourier Series
