@@ -49,3 +49,4 @@ pip install -r requirements.txt
 ![mom](./as_4/mom.png)
 #### 2) Formant analysis (cepstrum analysis)
 ![dad_1](./as_4/dad_1.png)
+## Assignment5: Linear Regression, Logistic Regression
