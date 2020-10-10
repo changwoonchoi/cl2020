@@ -3,3 +3,5 @@ jupyterlab
 matplotlib
 librosa
 SoundFile
+pandas
+scikit-learn
