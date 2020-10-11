@@ -83,5 +83,30 @@ Ans)
 \section{Cost function for logistic regression}
 Derive the cost function $J(\theta)$ from the perspective of the maximum (log) likelihood; i.e. by maximizing the joint probability of $m$ training samples being correctly classified. (Hint: the probability of $y=1$ or $0$, given $x$, parameterized by $\theta$ can be written more compactly as $P(y | x; \theta) = (h_\theta (x))^y (1 - h_\theta (x))^{1-y} )$)\\
 
-Ans)
+Ans)\\
+Assume ($\mathbf{x_1}$, $y_1$), ($\mathbf{x_2}$, $y_2$)), $...$ , ($\mathbf{x_N}$, $y_N$) are independently generated (iid assumption).\\
+probability of getting all $y_n$'s from corresponding $\mathbf{x_n}$'s:
+\begin{equation}
+	P(y_1 | \mathbf{x_1})P(y_2 | \mathbf{x_2}) ... P(y_N | \mathbf{x_N}) = \prod_{n=1}^{N} {P(y_n | \mathbf{x_n})}
+\end{equation}
+From the perspective of the maximum likelihood, selects the hypothesis $h$ that maximizes this probability.\\
+We can equivalently minimize a more convenient quantity: 
+\begin{equation}
+	- {1 \over N} \ln (\prod_{n=1}^{N} {P(y_n | \mathbf{x_n})}) = {1 \over N} \ln \sum_{n=1}^{N} {1 \over P(y_n | \mathbf{x_n})}
+\end{equation}
+( $\because - {1 \over N} \ln(x)$ is a monotonically decreasing function.)\\
+The likelihood would be:
+\begin{equation}
+	P(y | \mathbf{x}) = 
+	\begin{cases}
+		g(\mathbf{\theta}^T\mathbf{x}) & \text{for $y = +1$}\\
+		1 - g(\mathbf{\theta^T}\mathbf{x}) & \text{for $y = -1$}\\
+	\end{cases}
+\end{equation}
+
+eq (4) can be write as,
+\begin{equation}
+	P(y | \mathbf{x})=  g(y \theta^T \mathbf{x})
+\end{equation}
+
 \end{document}
