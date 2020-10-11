@@ -8,6 +8,7 @@
 \usepackage{amsmath}
 \usepackage{changepage}
 \usepackage{amssymb}
+\usepackage{ifthen}
 \usepackage{graphicx}%
 \setcounter{MaxMatrixCols}{30}
 \newtheorem{theorem}{Theorem}
@@ -49,17 +50,35 @@
 Suppose you train a logistic regression classifier and your hypothesis function is $H_\theta (x) = g(\theta_0 + \theta_1 x_1 + \theta_2 x_2 ).$ Where $g$ is logistic function and $\theta_0 , \theta_1 ,$ and $\theta_2$ are 6, 0, and -1, respectively. Draw the decision boundaries for classification and indicate where the positive prediction is.
 \\
 
-Ans) 
+Ans) \\
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.5]{problem_1}
+	\caption{graph of $H_\theta (x)$, black line indicates the decision boundaries and the red region stands for the negative prediction and vice versa.}
+\end{figure}
+
 
 \section{Logistic function}
 The logistic function is defined as $g(z) = {1 \over 1 + e^{-z}}$. It is known that the logistic function is easy to differentiate because it has a simple derivative $ {\partial \over \partial z}g(z) = g(z)(1 - g(z)).$ Derive this equation.\\
 
-Ans)
+Ans) 
+\begin{equation}
+	\begin{aligned}
+		{\partial \over {\partial z}} g(z) & = {\partial \over {\partial z}} {1 \over {1 + e^{-z}}}\\
+		& = {\partial \over {\partial z}} {e^z \over {e^z + 1}} \\
+		& = {{e^z (e^z + 1) - e^z e^z} \over {(1 +e^z )^2}} \\
+		& = {e^z \over {(1 +e^z )^2}} \\
+		& = {e^z \over {1 +e^z }} {1 \over {1 +e^z }} \\
+		& = {1 \over {1 +e^{-z} }} {e^{-z} \over {1 +e^{-z} }} \\
+		& = g(z) (1 - g(z))
+	\end{aligned}
+\end{equation}
 
 \section{Gradient descent for logistic regression}
 Using the equation above, derive the gradient descent algorithm for logistic regression.\\
 
 Ans)
+
 
 \section{Cost function for logistic regression}
 Derive the cost function $J(\theta)$ from the perspective of the maximum (log) likelihood; i.e. by maximizing the joint probability of $m$ training samples being correctly classified. (Hint: the probability of $y=1$ or $0$, given $x$, parameterized by $\theta$ can be written more compactly as $P(y | x; \theta) = (h_\theta (x))^y (1 - h_\theta (x))^{1-y} )$)\\
