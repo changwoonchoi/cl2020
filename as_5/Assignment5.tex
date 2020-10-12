@@ -77,8 +77,21 @@ Ans)
 \section{Gradient descent for logistic regression}
 Using the equation above, derive the gradient descent algorithm for logistic regression.\\
 
-Ans)
-
+Ans) \\
+Let $J(\theta)$ be the cost function of our problem. \\Derived by Problem 4, (which is solved after this problem)
+\begin{equation}
+ J(\theta) = - {1 \over m } \sum_{i=1}^{m} [y^{(i)} \log g(\theta^T \mathbf{x}) + (1 - y^{(i)})\log(1 - g(\theta^T \mathbf{x}))]
+\end{equation}
+Then, the derivative of $J(\theta)$ is, 
+\begin{equation}
+	\begin{aligned}
+		{\partial \over {\partial \theta_j}} J(\theta) & = {\partial \over {\partial \theta_j}} {-1 \over m} \sum_{i=1}^{m} [y^{(i)} \log g(\theta^T x^{(i)}) + (1 - y^{(i)})\log(1 - g(\theta^T x^{(i)}))] \\
+		& =- {1 \over m} \sum_{i=1}^{m} [y^{(i)} {\partial \over {\partial \theta_j}} \log g(\theta^T x^{(i)}) + (1 - y^{(i)}) {\partial \over {\partial \theta_j}}\log(1 - g(\theta^T x^{(i)}))] \\
+		& = - {1 \over m} \sum_{i=1}^{m} [{{ y^{(i)}{\partial \over {\partial \theta_j}} g(\theta^T x^{(i)})} \over {g(\theta^T x^{(i)})}} + {{ (1-y^{(i)}){\partial \over {\partial \theta_j}} (1-g(\theta^T x^{(i)}))} \over {(1-g(\theta^T x^{(i)}))}}] \\
+		& = - {1 \over m} \sum_{i=1}^{m} [{ y^{(i)} g(\theta^T x^{(i)})(1 - g(\theta^T x^{(i)})){\partial \over {\partial \theta_j}} \theta^T x^{(i)} \over {g(\theta^T x^{(i)})}} + {{ -(1-y^{(i)}) g(\theta^T x^{(i)})(1-g(\theta^T x^{(i)}))}{\partial \over {\partial \theta_j}} \theta^T x^{(i)} \over {(1-g(\theta^T x^{(i)}))}}] \\
+		& = - {1 \over m} \sum_{i=1}^{m}
+	\end{aligned}
+\end{equation}
 
 \section{Cost function for logistic regression}
 Derive the cost function $J(\theta)$ from the perspective of the maximum (log) likelihood; i.e. by maximizing the joint probability of $m$ training samples being correctly classified. (Hint: the probability of $y=1$ or $0$, given $x$, parameterized by $\theta$ can be written more compactly as $P(y | x; \theta) = (h_\theta (x))^y (1 - h_\theta (x))^{1-y} )$)\\
