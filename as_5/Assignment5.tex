@@ -9,11 +9,12 @@
 \usepackage{changepage}
 \usepackage{amssymb}
 \usepackage{ifthen}
+\usepackage{algorithm, algpseudocode}
 \usepackage{graphicx}%
 \setcounter{MaxMatrixCols}{30}
 \newtheorem{theorem}{Theorem}
 \newtheorem{acknowledgement}[theorem]{Acknowledgement}
-\newtheorem{algorithm}[theorem]{Algorithm}
+%\newtheorem{algorithm}[theorem]{Algorithm}
 \newtheorem{axiom}{Axiom}
 \newtheorem{case}[theorem]{Case}
 \newtheorem{claim}[theorem]{Claim}
@@ -65,10 +66,8 @@ Ans)
 \begin{equation}
 	\begin{aligned}
 		{\partial \over {\partial z}} g(z) & = {\partial \over {\partial z}} {1 \over {1 + e^{-z}}}\\
-		& = {\partial \over {\partial z}} {e^z \over {e^z + 1}} \\
-		& = {{e^z (e^z + 1) - e^z e^z} \over {(1 +e^z )^2}} \\
-		& = {e^z \over {(1 +e^z )^2}} \\
-		& = {e^z \over {1 +e^z }} {1 \over {1 +e^z }} \\
+		& = {\partial \over {\partial z}} {e^z \over {e^z + 1}} = {{e^z (e^z + 1) - e^z e^z} \over {(1 +e^z )^2}}\\
+		& = {e^z \over {(1 +e^z )^2}} = {e^z \over {1 +e^z }} {1 \over {1 +e^z }}\\
 		& = {1 \over {1 +e^{-z} }} {e^{-z} \over {1 +e^{-z} }} \\
 		& = g(z) (1 - g(z))
 	\end{aligned}
@@ -78,9 +77,16 @@ Ans)
 Using the equation above, derive the gradient descent algorithm for logistic regression.\\
 
 Ans) \\
-Let $J(\theta)$ be the cost function of our problem. \\Derived by Problem 4, (which is solved after this problem)
+Let $J(\theta)$ be the cost function of our problem. Since we are employing logistic regression, 
 \begin{equation}
- J(\theta) = - {1 \over m } \sum_{i=1}^{m} [y^{(i)} \log g(\theta^T \mathbf{x}) + (1 - y^{(i)})\log(1 - g(\theta^T \mathbf{x}))]
+	h_\theta (\mathbf{x}) = g(\theta^T \mathbf{x}).
+\end{equation}
+Derived by Problem 4, (which is solved after this problem)
+\begin{equation}
+	\begin{aligned}
+		J(\theta) & = - {1 \over m } \sum_{i=1}^{m} [y^{(i)} \log g(\theta^T \mathbf{x}^{(i)}) + (1 - y^{(i)})\log(1 - g(\theta^T \mathbf{x}^{(i)}))] \\
+		& = - {1 \over m } \sum_{i=1}^{m} [y^{(i)} \log h_\theta (\mathbf{x}^{(i)}) + (1 - y^{(i)})\log (1 - h_\theta (\mathbf{x}^{(i)}))]
+	\end{aligned}
 \end{equation}
 Then, the derivative of $J(\theta)$ is, 
 \begin{equation}
@@ -88,38 +94,56 @@ Then, the derivative of $J(\theta)$ is,
 		{\partial \over {\partial \theta_j}} J(\theta) & = {\partial \over {\partial \theta_j}} {-1 \over m} \sum_{i=1}^{m} [y^{(i)} \log g(\theta^T x^{(i)}) + (1 - y^{(i)})\log(1 - g(\theta^T x^{(i)}))] \\
 		& =- {1 \over m} \sum_{i=1}^{m} [y^{(i)} {\partial \over {\partial \theta_j}} \log g(\theta^T x^{(i)}) + (1 - y^{(i)}) {\partial \over {\partial \theta_j}}\log(1 - g(\theta^T x^{(i)}))] \\
 		& = - {1 \over m} \sum_{i=1}^{m} [{{ y^{(i)}{\partial \over {\partial \theta_j}} g(\theta^T x^{(i)})} \over {g(\theta^T x^{(i)})}} + {{ (1-y^{(i)}){\partial \over {\partial \theta_j}} (1-g(\theta^T x^{(i)}))} \over {(1-g(\theta^T x^{(i)}))}}] \\
-		& = - {1 \over m} \sum_{i=1}^{m} [{ y^{(i)} g(\theta^T x^{(i)})(1 - g(\theta^T x^{(i)})){\partial \over {\partial \theta_j}} \theta^T x^{(i)} \over {g(\theta^T x^{(i)})}} + {{ -(1-y^{(i)}) g(\theta^T x^{(i)})(1-g(\theta^T x^{(i)}))}{\partial \over {\partial \theta_j}} \theta^T x^{(i)} \over {(1-g(\theta^T x^{(i)}))}}] \\
-		& = - {1 \over m} \sum_{i=1}^{m}
+		& = - {1 \over m} \sum_{i=1}^{m} [{ y^{(i)} g(\theta^T x^{(i)})(1 - g(\theta^T x^{(i)})){\partial \over {\partial \theta_j}} \theta^T x^{(i)} \over {g(\theta^T x^{(i)})}} - {{(1-y^{(i)}) g(\theta^T x^{(i)})(1-g(\theta^T x^{(i)}))}{\partial \over {\partial \theta_j}} \theta^T x^{(i)} \over {(1-g(\theta^T x^{(i)}))}}] \\
+		& = - {1 \over m} \sum_{i=1}^{m} [y^{(i)}(1 - g(\theta^T x^{(i)}))x_j^{(i)} - (1 - y^{(i)})g(\theta^T x^{(i)})x_j^{(i)}]\\
+		& = {1 \over m} \sum_{i=1}^{m} [g(\theta^T x^{(i)}) - y^{(i)}]x_j^{(i)}\\
+		& = {1 \over m} \sum_{i=1}^{m} [h_\theta (x^{(i)}) - y^{(i)}]x_j^{(i)}
 	\end{aligned}
 \end{equation}
-
+Thus, the gradient descent algorithm for logistic regression is:\\
+\begin{algorithm}
+	\caption{Gradient descent for logistic regression}
+	\begin{algorithmic}[1]
+		\State{Given dataset $x$ and label $y$ of size $m$,}
+		\Repeat
+		\State $\theta_j \leftarrow \theta_j - \alpha {\partial \over {\partial \theta_j}} J(\theta)$ 
+		\State where $\alpha$ is a constant learning rate,
+		${\partial \over {\partial \theta_j}} = {1 \over m} \sum_{i=1}^{m} [g(\theta^T x^{(i)}) - y^{(i)}]x_j^{(i)}$
+		\Until{convergence of training}
+	\end{algorithmic}
+\end{algorithm}
 \section{Cost function for logistic regression}
 Derive the cost function $J(\theta)$ from the perspective of the maximum (log) likelihood; i.e. by maximizing the joint probability of $m$ training samples being correctly classified. (Hint: the probability of $y=1$ or $0$, given $x$, parameterized by $\theta$ can be written more compactly as $P(y | x; \theta) = (h_\theta (x))^y (1 - h_\theta (x))^{1-y} )$)\\
 
 Ans)\\
-Assume ($\mathbf{x_1}$, $y_1$), ($\mathbf{x_2}$, $y_2$)), $...$ , ($\mathbf{x_N}$, $y_N$) are independently generated (iid assumption).\\
+Assume ($\mathbf{x_1}$, $y_1$), ($\mathbf{x_2}$, $y_2$)), $...$ , ($\mathbf{x_m}$, $y_m$) are independently generated (iid assumption).\\
 probability of getting all $y_n$'s from corresponding $\mathbf{x_n}$'s:
 \begin{equation}
-	P(y_1 | \mathbf{x_1})P(y_2 | \mathbf{x_2}) ... P(y_N | \mathbf{x_N}) = \prod_{n=1}^{N} {P(y_n | \mathbf{x_n})}
+	P(y_1 | \mathbf{x_1})P(y_2 | \mathbf{x_2}) ... P(y_m | \mathbf{x_m}) = \prod_{n=1}^{m} {P(y_n | \mathbf{x_n})}
 \end{equation}
 From the perspective of the maximum likelihood, selects the hypothesis $h$ that maximizes this probability.\\
-We can equivalently minimize a more convenient quantity: 
+We can equivalently \textit{minimize} a more convenient quantity: 
 \begin{equation}
-	- {1 \over N} \ln (\prod_{n=1}^{N} {P(y_n | \mathbf{x_n})}) = {1 \over N} \ln \sum_{n=1}^{N} {1 \over P(y_n | \mathbf{x_n})}
+	- {1 \over m} \ln (\prod_{n=1}^{m} {P(y_n | \mathbf{x_n})}) = -{1 \over m} \ln \sum_{n=1}^{m} P(y_n | \mathbf{x_n})
 \end{equation}
-( $\because - {1 \over N} \ln(x)$ is a monotonically decreasing function.)\\
+( $\because - {1 \over m} \ln(x)$ is a monotonically decreasing function.)\\
 The likelihood would be:
 \begin{equation}
 	P(y | \mathbf{x}) = 
 	\begin{cases}
-		g(\mathbf{\theta}^T\mathbf{x}) & \text{for $y = +1$}\\
-		1 - g(\mathbf{\theta^T}\mathbf{x}) & \text{for $y = -1$}\\
+		h_\theta (\mathbf{x}) & \text{for $y = 1$}\\
+		1 - h_\theta (\mathbf{x}) & \text{for $y = 0$}\\
 	\end{cases}
 \end{equation}
 
 eq (4) can be write as,
 \begin{equation}
-	P(y | \mathbf{x})=  g(y \theta^T \mathbf{x})
+	P(y | \mathbf{x})=  (h_\theta (x^{(i)}))^y (1 - h_\theta (x^{(i)}))^{1-y}
 \end{equation}
-
+Substituting equation (8) into equation(6) gives ($n.l.l$ stands for negative log likelihood):
+\begin{equation}
+	n.l.l = - {1 \over m } \sum_{n=1}^{m} [y_n \log h_\theta (\mathbf{x}_n) + (1 - y_n )\log (1 - h_\theta (\mathbf{x}_n))]
+\end{equation}
+So, minimizing this quantity is equivalent to maximizing the likelihood. \\
+$\therefore$ we can define the cost function $J(\theta)$ as $- {1 \over m } \sum_{i=1}^{m} [y^{(i)} \log h_\theta (\mathbf{x}^{(i)}) + (1 - y^{(i)})\log (1 - h_\theta (\mathbf{x}^{(i)}))]$ as the perspective of maximum likelihood. (We call this function as cross-entropy loss.)
 \end{document}
