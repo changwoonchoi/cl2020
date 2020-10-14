@@ -42,7 +42,7 @@
 
 \begin{document}
 
-\title{Assignment 5}
+\title{Assignment 6}
 \author{Changwoon Choi \\ 2020-20206}
 \date{\today}
 \maketitle
@@ -51,12 +51,26 @@
 Suppose you want to train the digit classifier using a simple neural network (i.e. the number of output nodes is 10). The input is a square gray image with 100 pixels. (i.e. (10x10) for on image). If your network has only one hidden layer with 50 nodes, how many parameters will be updated in the training phase (HINT: do not forget the bias node)?
 \\
 
-Ans) 
+Ans) The number of  parameters between the input layer and the hidden layer is 101 x 50 = 5050, and the number of parameters between the hidden layer and the output layer is 51 x 10 = 510. $\therefore$ the number of parameters that would be updated in the training phase is 5560.
 
 \section{Feedforward Propagation}
-You are using the neural network pictured below and have learned the parameters $\Theta^{(l)} = $
-
-Ans) 
+ You are using the neural network pictured below and have learned the parameters $\Theta^{(1)} = \begin{bmatrix}
+	1 & 2.1 & 1.3 \\
+	1 & 0.6 & -1.2 \\
+\end{bmatrix}$ (used to compute $a^{(3)}$) and $\Theta^{(2)} = \begin{bmatrix}
+	1 & 4.5 & 3.1 \\
+\end{bmatrix}$  (used to compute $a^{(3)}$, as function of $a^{(2)}$). Suppose you swap the parameters for the first hidden layer between its two units. So  $\Theta^{(1)} = \begin{bmatrix}
+	1 & 0.6 & -1.2 \\
+	1 & 2.1 & 1.3 \\
+\end{bmatrix}$and $\Theta^{(2)} = \begin{bmatrix}
+	1 & 4.5 & 3.1 \\
+\end{bmatrix}$. How will this change the value of the output $h_{\Theta}(x)$ ? 
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.2]{HW6_fig1.png}
+\end{figure}
+\\
+Ans) d. Insufficient information to tell: it may increase or decrease. It is depend on $x$. (If the parameters were trained well, it may be increase, but it is not guaranteed.)
 
 \section{Back Propagation}
 When training the neural networks, what are the typical steps for using a gradient descent algorithm?\\
