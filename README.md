@@ -50,3 +50,5 @@ pip install -r requirements.txt
 #### 2) Formant analysis (cepstrum analysis)
 ![dad_1](./as_4/dad_1.png)
 ## Assignment5: Linear Regression, Logistic Regression
+
+## Assignment6: Neural Networks
