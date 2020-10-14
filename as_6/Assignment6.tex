@@ -1,0 +1,82 @@
+\documentclass[12pt]{article}%
+\usepackage{amsfonts}
+\usepackage{fancyhdr}
+\usepackage{comment}
+\usepackage[a4paper, top=2.5cm, bottom=2.5cm, left=2.2cm, right=2.2cm]%
+{geometry}
+\usepackage{times}
+\usepackage{amsmath}
+\usepackage{changepage}
+\usepackage{amssymb}
+\usepackage{ifthen}
+\usepackage{algorithm, algpseudocode}
+\usepackage{graphicx}%
+\setcounter{MaxMatrixCols}{30}
+\newtheorem{theorem}{Theorem}
+\newtheorem{acknowledgement}[theorem]{Acknowledgement}
+%\newtheorem{algorithm}[theorem]{Algorithm}
+\newtheorem{axiom}{Axiom}
+\newtheorem{case}[theorem]{Case}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{conclusion}[theorem]{Conclusion}
+\newtheorem{condition}[theorem]{Condition}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{criterion}[theorem]{Criterion}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{exercise}[theorem]{Exercise}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{notation}[theorem]{Notation}
+\newtheorem{problem}[theorem]{Problem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{solution}[theorem]{Solution}
+\newtheorem{summary}[theorem]{Summary}
+\newenvironment{proof}[1][Proof]{\textbf{#1.} }{\ \rule{0.5em}{0.5em}}
+
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Z}{\mathbb{Z}}
+
+\begin{document}
+
+\title{Assignment 5}
+\author{Changwoon Choi \\ 2020-20206}
+\date{\today}
+\maketitle
+
+\section{Model Representation}
+Suppose you want to train the digit classifier using a simple neural network (i.e. the number of output nodes is 10). The input is a square gray image with 100 pixels. (i.e. (10x10) for on image). If your network has only one hidden layer with 50 nodes, how many parameters will be updated in the training phase (HINT: do not forget the bias node)?
+\\
+
+Ans) 
+
+\section{Feedforward Propagation}
+You are using the neural network pictured below and have learned the parameters $\Theta^{(l)} = $
+
+Ans) 
+
+\section{Back Propagation}
+When training the neural networks, what are the typical steps for using a gradient descent algorithm?\\
+1) Compute the error between the actual value and the predicted value\\
+2) Reiterate until you find the best weights of network (until the error is sufficiently small)\\
+3) Pass an input through the network and get values from output layer\\
+4) Initialize random weight and bias\\
+5) Go to each neuron which contributes to the error and change its respective values to reduce the error\\
+
+Ans) c. 4 $\rightarrow$ 3 $\rightarrow$ 1 $\rightarrow$ 5 $\rightarrow$ 2
+
+\section{Gradient Computation}
+Given a quadratic cost function $J(\Theta) = {1 \over 2} \sum_{k \in K} ((h_\Theta (x)_k - y_k ))^2$ and  "error" of cost for $a^{(l)_j}$ (unit $j$ in layer $l$) $\delta^{(l)}_j = {\partial \over {\partial z^{(l)}_j}} J(\Theta)$, drive the following equations:
+\subsection{$\delta$}
+\subsection{$\delta$}
+\subsection{$\delta$}
+
+\section{Gradient Computation}
+Repeat Problem 4 for the cross-entropy cost function
+
+\section{Convexity of Cost Functions}
+Assume we use a sigmoid function for output layer activation in Neural Network; i.e. $a_L = g_L (z_L ) = {1 \over {1 + e^{(-zL)}}}$, Prove that the cross-entropy loss function is convex.
+\end{document}
