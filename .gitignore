@@ -4,3 +4,9 @@
 *.pdf
 *.aux
 *.synctex.gz
+*.zip
+/as_6/npy/
+/as_6/wav/
+/as_6/preprocessed_features/
+/as_6/recordings/
+/as_6/recordings_npy/
