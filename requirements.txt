@@ -5,3 +5,5 @@ librosa
 SoundFile
 pandas
 scikit-learn
+Keras
+tensorflow-gpu

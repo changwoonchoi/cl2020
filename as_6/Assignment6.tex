@@ -83,10 +83,17 @@ When training the neural networks, what are the typical steps for using a gradie
 Ans) c. 4 $\rightarrow$ 3 $\rightarrow$ 1 $\rightarrow$ 5 $\rightarrow$ 2
 
 \section{Gradient Computation}
-Given a quadratic cost function $J(\Theta) = {1 \over 2} \sum_{k \in K} ((h_\Theta (x)_k - y_k ))^2$ and  "error" of cost for $a^{(l)}_j$ (unit $j$ in layer $l$) $\delta^{(l)}_j = {\partial \over {\partial z^{(l)}_j}} J(\Theta)$, drive the following equations:
-\subsection{$\delta$}
-\subsection{$\delta$}
-\subsection{$\delta$}
+Given a quadratic cost function $J(\Theta) = {1 \over 2} \sum_{k \in K} ((h_\Theta (x)_k - y_k ))^2$ and  ``error" of cost for $a^{(l)}_j$ (unit $j$ in layer $l$) $\delta^{(l)}_j = {\partial \over {\partial z^{(l)}_j}} J(\Theta)$, drive the following equations:
+\subsection{$\delta^{(L)} = (a^{(L)} - y).*g^{'}(z^{(L)})$}
+by simple chain rule, 
+\begin{equation}
+	\begin{aligned}
+		\delta^{(L)}_j & = {\partial \over {\partial z^{(L)}_j }} J(\Theta) \\
+		& = \\
+	\end{aligned}
+\end{equation}
+\subsection{$\delta^{(l)} = (\Theta^{(l)})^{T} \delta^{(l+1)}.*g^{'}(z^{(l)})$}
+\subsection{$\frac{\partial}{\partial \Theta_{ij}^{(l)}} J(\Theta) = a_{j}^{(l)} \delta_{i}^{l+1}$}
 
 \section{Gradient Computation}
 Repeat Problem 4 for the cross-entropy cost function
