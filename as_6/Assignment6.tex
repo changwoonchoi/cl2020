@@ -85,19 +85,58 @@ Ans) c. 4 $\rightarrow$ 3 $\rightarrow$ 1 $\rightarrow$ 5 $\rightarrow$ 2
 \section{Gradient Computation}
 Given a quadratic cost function $J(\Theta) = {1 \over 2} \sum_{k \in K} ((h_\Theta (x)_k - y_k ))^2$ and  ``error" of cost for $a^{(l)}_j$ (unit $j$ in layer $l$) $\delta^{(l)}_j = {\partial \over {\partial z^{(l)}_j}} J(\Theta)$, drive the following equations:
 \subsection{$\delta^{(L)} = (a^{(L)} - y).*g^{'}(z^{(L)})$}
-by simple chain rule, 
+Ans) let $e^{(L)}_j = g(z^{(L)}_j) - y_j$. and by a simple chain rule, 
 \begin{equation}
 	\begin{aligned}
 		\delta^{(L)}_j & = {\partial \over {\partial z^{(L)}_j }} J(\Theta) \\
-		& = \\
+		& = {\partial J(\Theta) \over {\partial e^{(L)}_j }} {\partial e^{(L)}_j \over {\partial g(z^{(L)}_j ) }} {\partial g(z^{(L)}_j ) \over {\partial z^{(L)}_j }} \\
+		& = {\partial \over {\partial e^{(L)}_j }} ({1 \over 2} \sum_{k \in K} {e^{(L)}_k}^2 ) {\partial \over {\partial g(z^{(L)}_j )}} ( g(z^{(L)}_j) - y_j) {\partial \over {\partial z^{(L)}_j}} (g(z^{(L)}_j))\\
+		& =  e^{(L)}_j g^{'}(z^{(L)})
 	\end{aligned}
 \end{equation}
+$\therefore \delta^{(L)} = (a^{(L)} - y)g^{'}(z^{(L)})$
+
 \subsection{$\delta^{(l)} = (\Theta^{(l)})^{T} \delta^{(l+1)}.*g^{'}(z^{(l)})$}
+Ans) 
+
 \subsection{$\frac{\partial}{\partial \Theta_{ij}^{(l)}} J(\Theta) = a_{j}^{(l)} \delta_{i}^{l+1}$}
 
 \section{Gradient Computation}
 Repeat Problem 4 for the cross-entropy cost function
+\subsection{$\delta^{(L)} = (a^{(L)} - y).*g^{'}(z^{(L)})$}
+\subsection{$\delta^{(l)} = (\Theta^{(l)})^{T} \delta^{(l+1)}.*g^{'}(z^{(l)})$}
+\subsection{$\frac{\partial}{\partial \Theta_{ij}^{(l)}} J(\Theta) = a_{j}^{(l)} \delta_{i}^{l+1}$}
 
 \section{Convexity of Cost Functions}
-Assume we use a sigmoid function for output layer activation in Neural Network; i.e. $a_L = g_L (z_L ) = {1 \over {1 + e^{(-zL)}}}$, Prove that the cross-entropy loss function is convex.
+Assume we use a sigmoid function for output layer activation in Neural Network; i.e. $a_L = g_L (z_L ) = {1 \over {1 + e^{(-zL)}}}$, Prove that the cross-entropy loss function is convex.\\
+Ans) Recall the cross-entropy loss:
+\begin{equation}
+	J(\mathbf{w}) = - (\sum_{i=1}^{m} y_i \log(g(\mathbf{w^T x_i})) + (1 - y_i )\log (1 - g(\mathbf{w^T x_i})))
+\end{equation}
+where $g(z) = 1/(1+e^{-z})$ and $g'(z) = g(z) (1 - g(z))$.\\
+let's show that $- \log(g(\mathbf{w^T x}))$ and $- \log(1 - \mathbf{w^T x}))$ are convex in $\mathbf{w}$:\\
+\begin{equation}
+	\begin{aligned}
+		\nabla_\mathbf{w} (- \log g(\mathbf{w^T x})) &= - {{\nabla_\mathbf{w} (g(\mathbf{w^T x}))} \over {g(\mathbf{w^T x})}}\\
+		&= - { {g'(\mathbf{w^T x}) \nabla_\mathbf{w} (\mathbf{w^T x})} \over {g(\mathbf{w^T x})}} \\
+		&= (g(\mathbf{w^T x}) - 1) \mathbf{x}\\
+	\end{aligned}
+\end{equation}
+\begin{equation}
+	\begin{aligned}
+		\nabla^2_\mathbf{w} (- \log g(\mathbf{w^T x}))&= \nabla_w (g(\mathbf{w^T x}) \mathbf{x})\\
+		&=g(\mathbf{w^T x})(1 - g(\mathbf{w^T x}))\mathbf{x x^T}
+	\end{aligned}
+\end{equation}
+$\because$ $g$ is sigmoid function, $g(\mathbf{w^T x})$ is between 0 and 1.\\
+$\therefore$ the matrix is positive semi-definite for any $\mathbf{x}$.\\
+Similarly we can show that
+\begin{equation}
+	\nabla_\mathbf{w} (- \log (1 - g(\mathbf{w^T x}))) = g(\mathbf{w^T x})\mathbf{x} 
+\end{equation}
+\begin{equation}
+	\nabla_w^2(- \log (1 - g(\mathbf{w^T x}))) = g(\mathbf{w^T x})(1 - g(\mathbf{w^T x}))\mathbf{x x^T}
+\end{equation}
+and, it is positive semi-definite for any $\mathbf{x}$.\\
+$\therefore$ $J(\mathbf{w})$ is convex in $\mathbf{w}$.
 \end{document}
