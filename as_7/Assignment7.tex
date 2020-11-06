@@ -55,20 +55,21 @@ Ans) Note that the training error and the validation error are both high, the mo
 \section{Regularization}
 Suppose you are using Polynomial Regression. You plot the learning curves and you notice that there is a large gap between the training error and the validation error. What is happening? What are three ways to solve this?
 
+Ans) When there is a large gap between the training error and the validation error, it means that the model is overfitted. To solve this, you may try 1) select more simple model (using lower dimensional polynomials in this case.), 2) get more data and train with larger dataset with same model, 3) put extra constraints on a model (e.g. add restrictions on polynomial parameter values or add extra terms in objective function.), 4) combine multiple hypotheses that explain training data (called ensemble methods).
 
 \section{Dropout}
 
 \subsection{Explain the dropout technique in terms of the dropout rate $p.$}
-Ans) 
+Ans) Dropout technique provides an inexpensive approximation to training a bagged ensemble of exponentially many neural nets. In each forward pass, dropout technique randomly set some neurons to zero with probability of dropout rate $p$, which is a hyperparameter (commonly 0.5 for hidden units). Removing a unit can be simply implemented by multiply its output value by 0. In training phase, we load an example into a minibatch and randomly sample a binary mask to apply to all input/hidden units, then run as usual: forward prop $\rightarrow$ backprop $\rightarrow$ parameter updates. In inference phase, with multiplying by inclusion probability ($1 - p$), we can conduct forward pass successfully.
 \subsection{Does dropout slow down training? Does it slow down inference?}
-Ans)
+Ans) Logically, by omitting at each iteration neurons with a dropout, those omitted on an interation are not updated during the backpropagation. So the training phase is \textit{slowed down}. (On the other hand, by using a Gaussian Dropout method, all the neurons are exposed at each iteration and for each training sample. This can avoid the slowdown.) In inference phase, since the whole process is exactly same as normal inference pass except multiplying by inclusion probability ($1 - p$), dropout \textit{does not slow down} the inference.
 \section{Optimization}
 State the \textit{True} or \textit{False} for the followings.
 \subsection{Adam should be used with batch gradient computations, not with mini-batches.}
-Ans)
+Ans) False
 \subsection{Adam combines the advantages of RMSProp and gradient descent with momentum.}
-Ans)
+Ans) True
 \subsection{The learning rate of the Adam optimizer does not need to be tuned.}
-Ans)
+Ans) False
 \end{document}
 
